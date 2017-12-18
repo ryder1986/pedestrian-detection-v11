@@ -1030,7 +1030,7 @@ public:
         int ret_size=0;
         switch (client_cmd) {
         case Protocol::ADD_CAMERA:
-
+            prt(info,"protocol :add    cam  ");
             bta.clear();
             bta.append(src_buf+Protocol::HEAD_LENGTH,pkg_len);
             add_camera(bta.data());
@@ -1038,7 +1038,7 @@ public:
             ret_size= Protocol::HEAD_LENGTH;
             break;
         case  Protocol::GET_CONFIG:
-
+            prt(info,"protocol :get cofnig  ");
             memcpy(dst_buf,src_buf,Protocol::HEAD_LENGTH);
             memcpy(dst_buf+Protocol::HEAD_LENGTH,p_cfg->get_config().data(),p_cfg->get_config().size());
             ret_size=p_cfg->get_config().size()+Protocol::HEAD_LENGTH;

@@ -1,47 +1,71 @@
-include(../pedestrian.pri)
+#-------------------------------------------------
+#
+# Project created by QtCreator 2017-09-13T14:16:40
+#
+#-------------------------------------------------
+include(pedestrian.pri)
 QT       += core gui network opengl
-HEADERS += \
-    mainwindow.h \
-    tools.h
-#/media/sf_E_DRIVE/projects/repo-github/pedestrian-detection-v10/build/linux32/ui_testform2.h
-#UI_DIR =/media/sf_E_DRIVE/projects/repo-github/pedestrian-detection-v10/build/linux32/
+CONFIG +=qml c++11
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = client
+TEMPLATE = app
+
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which as been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
 
 SOURCES += \
-    mainwindow.cpp \
-    main.cpp
-INCLUDEPATH +=$$INCPATH
+        main.cpp \
+        mainwindow.cpp \
+    client.cpp \
+    videohandler.cpp \
+    mainwidget.cpp
+
+HEADERS += \
+        mainwindow.h \
+    client.h \
+    common.h \
+    config.h \
+    protocol.h \
+    yuvrender.h \
+    camera.h \
+    protocol.h \
+    videohandler.h \
+    videosrc.h \
+    mainwidget.h
+
 FORMS += \
-  \
+        mainwindow.ui \
     form.ui
 
- QT += widgets
-TEMPLATE = app
+#QMAKE_LIBDIR+="C:/Users/root/Desktop/opencv-2.4.9/opencv/build/x64/vc12/lib/"
+#DEPENDPATH+="C:/Users/root/Desktop/opencv-2.4.9/opencv/build/x64/vc12/bin/"
+
+INCLUDEPATH +="$$CVPATH/include"
+win32{
+LIBS+=-L$$CVPATH/lib -lopencv_core249 -lopencv_highgui249 -lopencv_objdetect249 -lopencv_imgproc249 -lopencv_ml249 -lopencv_video249
+}
 unix{
-    DEFINES += IS_UNIX
-    QMAKE_CXXFLAGS+="-std=c++11"
-    INCLUDEPATH +="$$CVPATH/cv/opencv-249-linux32/include" \
-    $$COMMON_INCLUDE_PATH
-    LIBS+=-L$$CVPATH/cv/opencv-249-linux32/lib -lopencv_core -lopencv_highgui -lopencv_objdetect -lopencv_imgproc -lopencv_ml -lopencv_video -lX11 \
-    $$COMMON_LIB_PATH/libtools.a
-}
-win32{
-    INCLUDEPATH +="$$CVPATH/cv/opencv-vs2013-x86/include" \
-    $$COMMON_INCLUDE_PATH
-    LIBS+= \
-    -L$$COMMON_LIB_PATH/ -ltools
-}
+#INCLUDEPATH +=/root/bk/opencv-2-4-9-source/build/__install/include
+#LIBS+=-L/root/bk/opencv-2-4-9-source/build/__install/lib -lopencv_core  -lopencv_highgui  -lopencv_objdetect -lopencv_imgproc -lopencv_ml -lopencv_video
+#LIBS+=-lopencv_core  -lopencv_highgui  -lopencv_objdetect -lopencv_imgproc -lopencv_ml -lopencv_video
+#INCLUDEPATH+=/root/sources/opencv-2.4.9/build/__install/include
+#LIBS += -L/root/sources/opencv-2.4.9/build/__install/lib  -lopencv_core  -lopencv_highgui  -lopencv_objdetect -lopencv_imgproc -lopencv_ml -lopencv_video
+#QMAKE_LFLAGS+="-Wl,--rpath=/root/sources/opencv-2.4.9/build/__install/lib/"
+#QMAKE_CXXFLAGS +="-w"
 
 
-win32{
-INCLUDEPATH +="$$CVPATH\cv\opencv-vs2013-x86\include"
-CONFIG(debug, debug|release){
-#message("debug mode ")
-LIBS+=-L$$CVPATH\cv\opencv-vs2013-x86\lib -lopencv_core249d -lopencv_highgui249d -lopencv_objdetect249d -lopencv_imgproc249d -lopencv_ml249d -lopencv_video249d
-}else{
-LIBS+=-L$$CVPATH\cv\opencv-vs2013-x86\lib -lopencv_core249 -lopencv_highgui249 -lopencv_objdetect249 -lopencv_imgproc249 -lopencv_ml249 -lopencv_video249
-#message("release mode ")
-}
-}
+LIBS+=-L$$CVPATH/lib -lopencv_core -lopencv_highgui -lopencv_objdetect -lopencv_imgproc -lopencv_ml -lopencv_video -lX11
 
 
-message(libpath---->:$$COMMON_INCLUDE_PATH)
+}
+DEFINES+=CLIENT

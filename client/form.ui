@@ -77,10 +77,10 @@
        <widget class="QWidget" name="widget_pic" native="true">
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
-          <widget class="QOpenGLWidget" name="openGLWidget"/>
+          <widget class="YuvRender" name="openGLWidget"/>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_3"/>
+          <widget class="QLineEdit" name="lineEdit_pic_info"/>
          </item>
         </layout>
        </widget>
@@ -174,7 +174,10 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QTreeWidget" name="treeWidget">
+             <widget class="QTreeWidget" name="treeWidget_devices">
+              <property name="contextMenuPolicy">
+               <enum>Qt::CustomContextMenu</enum>
+              </property>
               <column>
                <property name="text">
                 <string notr="true">device_name</string>
@@ -235,7 +238,7 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
+             <widget class="QLineEdit" name="lineEdit_url"/>
             </item>
            </layout>
           </widget>
@@ -288,6 +291,13 @@
   <zorder>widget_main</zorder>
   <zorder>widget_title</zorder>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>YuvRender</class>
+   <extends>QOpenGLWidget</extends>
+   <header>yuvrender.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
