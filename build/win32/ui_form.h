@@ -19,12 +19,12 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QOpenGLWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "yuvrender.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -43,13 +43,13 @@ public:
     QGridLayout *gridLayout;
     QWidget *widget_pic;
     QVBoxLayout *verticalLayout_5;
-    QOpenGLWidget *openGLWidget;
-    QLineEdit *lineEdit_3;
+    YuvRender *openGLWidget;
+    QLineEdit *lineEdit_pic_info;
     QWidget *widget_info;
     QVBoxLayout *verticalLayout_6;
     QGroupBox *groupBox_devices;
     QHBoxLayout *horizontalLayout_3;
-    QTreeWidget *treeWidget;
+    QTreeWidget *treeWidget_devices;
     QPushButton *pushButton_search;
     QGroupBox *groupBox_camera_detail;
     QVBoxLayout *verticalLayout;
@@ -111,15 +111,15 @@ public:
         widget_pic->setObjectName(QStringLiteral("widget_pic"));
         verticalLayout_5 = new QVBoxLayout(widget_pic);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        openGLWidget = new QOpenGLWidget(widget_pic);
+        openGLWidget = new YuvRender(widget_pic);
         openGLWidget->setObjectName(QStringLiteral("openGLWidget"));
 
         verticalLayout_5->addWidget(openGLWidget);
 
-        lineEdit_3 = new QLineEdit(widget_pic);
-        lineEdit_3->setObjectName(QStringLiteral("lineEdit_3"));
+        lineEdit_pic_info = new QLineEdit(widget_pic);
+        lineEdit_pic_info->setObjectName(QStringLiteral("lineEdit_pic_info"));
 
-        verticalLayout_5->addWidget(lineEdit_3);
+        verticalLayout_5->addWidget(lineEdit_pic_info);
 
 
         gridLayout->addWidget(widget_pic, 0, 1, 1, 1);
@@ -147,19 +147,20 @@ public:
         groupBox_devices->setAutoFillBackground(false);
         horizontalLayout_3 = new QHBoxLayout(groupBox_devices);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        treeWidget = new QTreeWidget(groupBox_devices);
+        treeWidget_devices = new QTreeWidget(groupBox_devices);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QStringLiteral("device_name"));
-        treeWidget->setHeaderItem(__qtreewidgetitem);
-        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem(treeWidget);
+        treeWidget_devices->setHeaderItem(__qtreewidgetitem);
+        QTreeWidgetItem *__qtreewidgetitem1 = new QTreeWidgetItem(treeWidget_devices);
         new QTreeWidgetItem(__qtreewidgetitem1);
         new QTreeWidgetItem(__qtreewidgetitem1);
         new QTreeWidgetItem(__qtreewidgetitem1);
-        QTreeWidgetItem *__qtreewidgetitem2 = new QTreeWidgetItem(treeWidget);
+        QTreeWidgetItem *__qtreewidgetitem2 = new QTreeWidgetItem(treeWidget_devices);
         new QTreeWidgetItem(__qtreewidgetitem2);
-        treeWidget->setObjectName(QStringLiteral("treeWidget"));
+        treeWidget_devices->setObjectName(QStringLiteral("treeWidget_devices"));
+        treeWidget_devices->setContextMenuPolicy(Qt::CustomContextMenu);
 
-        horizontalLayout_3->addWidget(treeWidget);
+        horizontalLayout_3->addWidget(treeWidget_devices);
 
 
         verticalLayout_6->addWidget(groupBox_devices);
@@ -234,9 +235,9 @@ public:
         checkBox_2->setText(QApplication::translate("Form", "sec frame", 0));
         groupBox_devices->setTitle(QApplication::translate("Form", "devices", 0));
 
-        const bool __sortingEnabled = treeWidget->isSortingEnabled();
-        treeWidget->setSortingEnabled(false);
-        QTreeWidgetItem *___qtreewidgetitem = treeWidget->topLevelItem(0);
+        const bool __sortingEnabled = treeWidget_devices->isSortingEnabled();
+        treeWidget_devices->setSortingEnabled(false);
+        QTreeWidgetItem *___qtreewidgetitem = treeWidget_devices->topLevelItem(0);
         ___qtreewidgetitem->setText(0, QApplication::translate("Form", "qiao xiang lu", 0));
         QTreeWidgetItem *___qtreewidgetitem1 = ___qtreewidgetitem->child(0);
         ___qtreewidgetitem1->setText(0, QApplication::translate("Form", "192.168.1.1", 0));
@@ -244,11 +245,11 @@ public:
         ___qtreewidgetitem2->setText(0, QApplication::translate("Form", "192.168.1.2", 0));
         QTreeWidgetItem *___qtreewidgetitem3 = ___qtreewidgetitem->child(2);
         ___qtreewidgetitem3->setText(0, QApplication::translate("Form", "test.264", 0));
-        QTreeWidgetItem *___qtreewidgetitem4 = treeWidget->topLevelItem(1);
+        QTreeWidgetItem *___qtreewidgetitem4 = treeWidget_devices->topLevelItem(1);
         ___qtreewidgetitem4->setText(0, QApplication::translate("Form", "nong lin lu", 0));
         QTreeWidgetItem *___qtreewidgetitem5 = ___qtreewidgetitem4->child(0);
         ___qtreewidgetitem5->setText(0, QApplication::translate("Form", "test.mp4", 0));
-        treeWidget->setSortingEnabled(__sortingEnabled);
+        treeWidget_devices->setSortingEnabled(__sortingEnabled);
 
         pushButton_search->setText(QApplication::translate("Form", "search device", 0));
         groupBox_camera_detail->setTitle(QApplication::translate("Form", "url", 0));

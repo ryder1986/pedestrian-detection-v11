@@ -191,12 +191,12 @@ Makefile: ..\..\client\client.pro C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\win32-msvc2
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\exclusive_builds.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\default_pre.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\win32\default_pre.prf \
-		..\..\pedestrian.pri \
+		..\..\client\pedestrian.pri \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\resolve_config.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\exclusive_builds_post.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\default_post.prf \
-		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\win32\rtti.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\c++11.prf \
+		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\win32\rtti.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\precompile_header.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\warn_on.prf \
 		C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\qt.prf \
@@ -335,12 +335,12 @@ C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\spec_post.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\exclusive_builds.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\default_pre.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\win32\default_pre.prf:
-..\..\pedestrian.pri:
+..\..\client\pedestrian.pri:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\resolve_config.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\exclusive_builds_post.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\default_post.prf:
-C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\win32\rtti.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\c++11.prf:
+C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\win32\rtti.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\precompile_header.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\warn_on.prf:
 C:\Qt\Qt5.5.0\5.5\msvc2013\mkspecs\features\qt.prf:

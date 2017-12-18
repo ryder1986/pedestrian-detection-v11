@@ -178,8 +178,8 @@ void Camera::output(QByteArray _t1, Camera * _t2)
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 struct qt_meta_stringdata_CameraManager_t {
-    QByteArrayData data[20];
-    char stringdata0[182];
+    QByteArrayData data[22];
+    char stringdata0[192];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -207,7 +207,9 @@ QT_MOC_LITERAL(15, 140, 13), // "modify_camera"
 QT_MOC_LITERAL(16, 154, 10), // "get_config"
 QT_MOC_LITERAL(17, 165, 5), // "char*"
 QT_MOC_LITERAL(18, 171, 1), // "i"
-QT_MOC_LITERAL(19, 173, 8) // "get_size"
+QT_MOC_LITERAL(19, 173, 7), // "Config*"
+QT_MOC_LITERAL(20, 181, 1), // "t"
+QT_MOC_LITERAL(21, 183, 8) // "get_size"
 
     },
     "CameraManager\0output_2_client\0\0ba\0"
@@ -215,7 +217,7 @@ QT_MOC_LITERAL(19, 173, 8) // "get_size"
     "buf\0add_camera_internal\0index\0"
     "del_camera_internal\0ip\0del_camera\0"
     "cam_no\0modify_camera\0get_config\0char*\0"
-    "i\0get_size"
+    "i\0Config*\0t\0get_size"
 };
 #undef QT_MOC_LITERAL
 
@@ -225,7 +227,7 @@ static const uint qt_meta_data_CameraManager[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -233,21 +235,22 @@ static const uint qt_meta_data_CameraManager[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   79,    2, 0x06 /* Public */,
+       1,    1,   84,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    2,   82,    2, 0x0a /* Public */,
-       7,    1,   87,    2, 0x0a /* Public */,
-       9,    0,   90,    2, 0x0a /* Public */,
-       9,    1,   91,    2, 0x0a /* Public */,
-      11,    1,   94,    2, 0x0a /* Public */,
-       7,    1,   97,    2, 0x0a /* Public */,
-      13,    1,  100,    2, 0x0a /* Public */,
-      15,    1,  103,    2, 0x0a /* Public */,
-      16,    1,  106,    2, 0x0a /* Public */,
-      16,    0,  109,    2, 0x0a /* Public */,
-      16,    1,  110,    2, 0x0a /* Public */,
-      19,    0,  113,    2, 0x0a /* Public */,
+       4,    2,   87,    2, 0x0a /* Public */,
+       7,    1,   92,    2, 0x0a /* Public */,
+       9,    0,   95,    2, 0x0a /* Public */,
+       9,    1,   96,    2, 0x0a /* Public */,
+      11,    1,   99,    2, 0x0a /* Public */,
+       7,    1,  102,    2, 0x0a /* Public */,
+      13,    1,  105,    2, 0x0a /* Public */,
+      15,    1,  108,    2, 0x0a /* Public */,
+      16,    1,  111,    2, 0x0a /* Public */,
+      16,    0,  114,    2, 0x0a /* Public */,
+      16,    1,  115,    2, 0x0a /* Public */,
+      16,    1,  118,    2, 0x0a /* Public */,
+      21,    0,  121,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QByteArray,    3,
@@ -264,6 +267,7 @@ static const uint qt_meta_data_CameraManager[] = {
     QMetaType::Int, 0x80000000 | 17,    6,
     QMetaType::QString,
     QMetaType::QByteArray, QMetaType::Int,   18,
+    0x80000000 | 19, QMetaType::Bool,   20,
     QMetaType::Int,
 
        0        // eod
@@ -290,7 +294,9 @@ void CameraManager::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 11: { QByteArray _r = _t->get_config((*reinterpret_cast< int(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QByteArray*>(_a[0]) = _r; }  break;
-        case 12: { int _r = _t->get_size();
+        case 12: { Config* _r = _t->get_config((*reinterpret_cast< bool(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< Config**>(_a[0]) = _r; }  break;
+        case 13: { int _r = _t->get_size();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         default: ;
         }
@@ -342,13 +348,13 @@ int CameraManager::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }

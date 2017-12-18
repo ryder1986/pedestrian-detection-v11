@@ -1,4 +1,4 @@
-#ifndef CAMERA_H
+﻿#ifndef CAMERA_H
 #define CAMERA_H
 /*
     well,there are two policies,one is emit buffer when VideoSrc avilable, one is timer emit fetching from VideoSrc per xx msecond.
@@ -154,24 +154,24 @@ public:
 
 #endif
 protected:
-    virtual void run()
-    {
-        video_handler.set_null_frame();
-        start_video_src();
-        while(quit_work==false)
-        {
-            //prt(info,"runing");
-            if(work()!=true){
-                restart_video();
-                //  emit restart_source();
-                QThread::msleep(200);//try work after 200ms
-                //      break;
-            }
-            QThread::msleep(30);
-        }
-        close_video_src();
-        //  quit_work=true;//tell main loop that you can quit
-    }
+//    virtual void run()
+//    {
+//        video_handler.set_null_frame();
+//        start_video_src();
+//        while(quit_work==false)
+//        {
+//            //prt(info,"runing");
+//            if(work()!=true){
+//                restart_video();
+//                //  emit restart_source();
+//                QThread::msleep(200);//try work after 200ms
+//                //      break;
+//            }
+//            QThread::msleep(30);
+//        }
+//        close_video_src();
+//        //  quit_work=true;//tell main loop that you can quit
+//    }
 
 signals:
     void restart_source();
