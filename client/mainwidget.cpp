@@ -2,6 +2,7 @@
 #include "yuvrender.h"
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
+    playing_index=0;
     f=new Ui::Form;
     f->setupUi(this);
 //    YuvRender *r=new YuvRender;
@@ -61,8 +62,18 @@ void MainWidget::del_camera(bool checked)
     }else{
 
         int del_index=itm->parent()->indexOfChild(itm)+1;
-        if(del_index<=cam_manager->get_size()&&del_index>0)
+        if(playing_index>0){
+            if(playing_index==del_index)
+            {
+                qDebug()<<"stop playing";
+                f->openGLWidget->stop();
+playing_index=0;
+            }
+        }
+        int size=cam_manager->get_size();
+        if(del_index<=size&&del_index>0)
         {
+
             cam_manager->del_camera(del_index);// delete camera local
             Protocol::encode_delcam_request(buf,del_index);//encode buffer
             client->call_server(buf,Protocol::HEAD_LENGTH);//talk to server
@@ -146,12 +157,13 @@ void MainWidget::on_treeWidget_devices_doubleClicked(const QModelIndex &index)
 
         }else{//child
             int now=itm->parent()->indexOfChild(itm);
+            playing_index=now+1;
             if(now<p_cfg->data.camera_amount){
                 QString url=itm->text(0);
                 qDebug()<<"get "<<url;
 //                f->openGLWidget->render_set_mat(mat);
 //                f->openGLWidget->update();
-                 f->openGLWidget->start();
+                 f->openGLWidget->start(itm->text(0));
 
             }
         }

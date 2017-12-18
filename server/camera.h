@@ -907,7 +907,7 @@ private:
             this_thread::sleep_for(chrono::milliseconds(1000));
             int frame_src=data->src_frame- data->src_old_frame;
             int frame_han=data->han_frame- data->han_old_frame;
-            prt(info,"get %d frames,process %d frames",frame_src,frame_han);
+      //      prt(info,"get %d frames,process %d frames",frame_src,frame_han);
             //  if(frame_src==0&&frame_han==0)
 #if 1
             if(frame_src==0&&frame_han==0)

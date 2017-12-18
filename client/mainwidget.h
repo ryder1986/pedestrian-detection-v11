@@ -60,6 +60,7 @@ private:
     char buf[BUF_MAX_LEN];
 
     QTreeWidgetItem *itm_root;
+    int playing_index;
 Config *p_cfg;
     QTreeWidgetItem *itm;
 };

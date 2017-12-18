@@ -1,5 +1,5 @@
 TEMPLATE=subdirs
-SUBDIRS+=server client common
+SUBDIRS+=server client
 CONFIG += no_docs_target
 
 #CVPATH="../../../res"

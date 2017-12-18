@@ -56,15 +56,15 @@ public:
         //  start_video_src();
     }
     ~Camera(){
-        if(quit_work==false){
-            prt(info,"stopping camera %s",data.ip.toStdString().data());
-            quit_work=true;//give run loop the "quit signal/flag"
-            //     QThread::msleep(1000);
-        }
+//        if(quit_work==false){
+//            prt(info,"stopping camera %s",data.ip.toStdString().data());
+//            quit_work=true;//give run loop the "quit signal/flag"
+//            //     QThread::msleep(1000);
+//        }
         //   this->quit();
         //      this->exit();
         //  this->destroyed();
-        this->wait();//wait run loop done
+  //     this->wait();//wait run loop done
         //  if(p_video_src!=NULL)
         //   delete p_video_src;
         //   p_video_src=NULL;
@@ -185,7 +185,7 @@ public slots:
     void tick_check_frame_rate()
     {
         int rate=tick-tick_last;
-        prt(info,"video %s frame rate %d",src_url.toStdString().data(),rate);
+        //prt(info,"video %s frame rate %d",src_url.toStdString().data(),rate);
 //        if(rate<10){
 //            prt(info,"video %s frame rate  drop to %d",src_url.toStdString().data(),rate);
 //        }
