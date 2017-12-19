@@ -8,7 +8,7 @@ QT       += core gui network opengl
 CONFIG +=qml c++11
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = client
+TARGET = pedestrian-client
 TEMPLATE = app
 DEFINES += QT_DEPRECATED_WARNINGS
 
