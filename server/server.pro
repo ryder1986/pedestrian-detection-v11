@@ -9,8 +9,8 @@ SOURCES+=main.cpp  \
     camera.cpp \
     server.cpp
 QT+=network core
-
-
+# CONFIG += qtc_runnable
+VPATH=/root/repo-github/res/
 unix{
     DEFINES += IS_UNIX
     QMAKE_CXXFLAGS+="-std=c++11"
