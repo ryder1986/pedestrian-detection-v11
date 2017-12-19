@@ -179,7 +179,7 @@ public:
             p_d->lk.unlock();
 
 
-            //this_thread::sleep_for(chrono::milliseconds(10));
+            this_thread::sleep_for(chrono::milliseconds(45));
 
         }
     }
@@ -203,13 +203,18 @@ public:
     {
 
         d.lk.lock();
-      //  printf("stoping %s\n",d.r->url);
-            std::cout<<d.r->url<<std::endl;
+
+        std::cout<<d.r->url<<std::endl;
 
         if(read_thread)
         {
             d.quit=true;
+
+#if 0
             read_thread->detach();
+#else
+              read_thread->join();
+#endif
             delete read_thread;
             read_thread=NULL;
         }
