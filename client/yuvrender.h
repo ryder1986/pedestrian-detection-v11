@@ -1,4 +1,4 @@
-#ifndef YUVRENDER_H
+﻿#ifndef YUVRENDER_H
 #define YUVRENDER_H
 
 #include <QOpenGLWidget>
@@ -187,7 +187,7 @@ public:
     void start(QString  url)
     {
         d.lk.lock();
-       // printf("stoping %s\n",url);
+
         std::cout<<url.toStdString().data()<<std::endl;
         d.quit=false;
         if(d.r)
