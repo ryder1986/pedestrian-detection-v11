@@ -54,9 +54,9 @@ public:
         memset(buffer,0,buf_size);
         memcpy(buffer,time,strlen(time));
         int i;
-        for( i=0;buffer[i]!='\n';i++)
-            ;
-        buffer[i]='\0';
+//        for( i=0;buffer[i]!='\n';i++)
+//            ;
+//        buffer[i]='\0';
 
         //   cout<<"("<<buf<<")"<<'['<<line_no<<']'<<'['<<func_name<<']'<<'['<<file_name<<']'<<'['<<buffer<<']'<<'['<<label<<']'<<endl;
         //  cout<<"("<<buf<<")"<<'['<<line_no<<']'<<'['<<func_name<<']'<<'['<<file_name<<']'<<'['<<buffer<<']'<<'['<<label<<']'<<endl;
@@ -71,7 +71,7 @@ public:
         cout<<last_substr(fn,t).data()<<"(line"<<line_no<<")"<<":"<<buf<<endl;
 #endif
    //     cout<<last_substr(last_substr(fn,'/'),'\\').data()<<"(line"<<line_no<<")"<<":"<<buf<<endl;
-         cout<<"["<<time<<"]["<<label<<"]["<<last_substr(last_substr(fn,'/'),'\\').data()<<":("<<line_no<<")===>"<<buf<<endl;
+         cout<<"["<<time<<"]["<<label<<"]["<<last_substr(last_substr(fn,'/'),'\\').data()<<":"<<line_no<<"]===>"<<buf<<endl;
         fflush(NULL);
     }
     inline static char* get_time_n()

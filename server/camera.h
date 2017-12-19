@@ -45,7 +45,7 @@ public:
     ServerInfoReporter(){
         timer=new QTimer();
         connect(timer,SIGNAL(timeout()),this,SLOT(check_client()));//TODO:maybe replace with readReady signal
-        udp_skt = new QUdpSocket(this);
+        udp_skt = new QUdpSocket();
         udp_skt->bind(Protocol::SERVER_REPORTER_PORT,QUdpSocket::ShareAddress);
         // timer->start(1000);
     }

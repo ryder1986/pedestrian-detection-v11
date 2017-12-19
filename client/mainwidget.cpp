@@ -46,7 +46,7 @@ void MainWidget::add_camera(bool checked)
     qDebug()<<"checked  "<<checked;
     QTreeWidgetItem *tmp_item=new QTreeWidgetItem(QStringList("edit here"));
     itm_root->addChild(tmp_item);
-    tmp_item->setFlags(Qt::ItemIsEditable | itm_root->flags()) ;
+    tmp_item->setFlags(Qt::ItemIsEditable | tmp_item->flags()) ;
     itm_root->setExpanded(true);
 }
 
@@ -95,6 +95,8 @@ void MainWidget::submit_camera(bool checked)
     memcpy(buf+Protocol::HEAD_LENGTH,setting.data(),setting.length());
     QByteArray rst=client->call_server(buf,len);//talk to server
 
+   // itm->setFlags(!Qt::ItemIsEditable | itm_root->flags()) ;
+    itm->setFlags(  itm->flags() & ~Qt::ItemIsEditable) ;
 
 
 }
