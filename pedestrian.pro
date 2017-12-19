@@ -1,6 +1,6 @@
 TEMPLATE=subdirs
-SUBDIRS+=server client
+SUBDIRS+=server client common test
 CONFIG += no_docs_target
 
 #CVPATH="../../../res"
-include(pedestrian.pri)
+#include(pedestrian.pri)

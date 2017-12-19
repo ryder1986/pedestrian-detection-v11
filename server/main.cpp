@@ -7,7 +7,12 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+
+
     prt(info,"main start ");
+
+  // fflush(NULL);
+
 
 #if 1
 

@@ -130,15 +130,18 @@ public slots:
 signals:
 private:
     CvCapture *p_cap;
-    char url[1000];
+
     int width;
     int height;
     Mat mat_rst;
+public:
+    char url[1000];
 };
 
 
 #include <thread>
 #include <mutex>
+#include <iostream>
 using namespace std;
 class YuvRender : public QOpenGLWidget
 {
@@ -150,10 +153,10 @@ class YuvRender : public QOpenGLWidget
         std::mutex lk;
         int quit;
     }data_t;
-  data_t d;
+    data_t d;
 public:
     std::thread *read_thread;
- //   VideoReader *r;
+    //   VideoReader *r;
     static void fun(void *addr)
     {
 
@@ -161,22 +164,22 @@ public:
         YuvRender *p=(YuvRender *) p_d->p;
         while(!p_d->quit)
         {
-     //    *(p_d->p_x)+=10;
+            //    *(p_d->p_x)+=10;
             p_d->lk.lock();
 
             Mat *mt= p_d->r->get_frame();
             if(mt){
-            p->render_set_mat(*mt);
-            p->update();
+                p->render_set_mat(*mt);
+                p->update();
 
             }else{
-                 p_d->r->restart();
+                p_d->r->restart();
             }
 
-               p_d->lk.unlock();
+            p_d->lk.unlock();
 
 
-         //this_thread::sleep_for(chrono::milliseconds(10));
+            //this_thread::sleep_for(chrono::milliseconds(10));
 
         }
     }
@@ -184,32 +187,37 @@ public:
     void start(QString  url)
     {
         d.lk.lock();
-         d.quit=false;
+       // printf("stoping %s\n",url);
+        std::cout<<url.toStdString().data()<<std::endl;
+        d.quit=false;
         if(d.r)
             delete d.r;
         d.r=new VideoReader(url);
-         if(!read_thread)
-        read_thread=new std::thread(fun,&d);
-   //     read_thread->detach();
-          d.lk.unlock();
+        if(!read_thread)
+            read_thread=new std::thread(fun,&d);
+        //     read_thread->detach();
+        d.lk.unlock();
     }
 
     void stop()
     {
 
- d.lk.lock();
- if(read_thread)
-    {
-     d.quit=true;
-     read_thread->join();
-     delete read_thread;
-     read_thread=NULL;
- }
-    delete d.r;
+        d.lk.lock();
+      //  printf("stoping %s\n",d.r->url);
+            std::cout<<d.r->url<<std::endl;
 
- d.r=NULL;
+        if(read_thread)
+        {
+            d.quit=true;
+            read_thread->detach();
+            delete read_thread;
+            read_thread=NULL;
+        }
+        delete d.r;
 
-   d.lk.unlock();
+        d.r=NULL;
+
+        d.lk.unlock();
 
     }
     // explicit YuvRender(QWidget *parent = 0);
@@ -217,7 +225,7 @@ public:
         QOpenGLWidget(parent),video_width(VIDEO_WIDTH),video_height(VIDEO_HEIGHT),pressed_x(0),pressed_y(0)
     {
 
-      //  r=new VideoReader();
+        //  r=new VideoReader();
         pos_x=100;
         pos_y=100;
         tick=0;
@@ -325,7 +333,7 @@ public:
         Mat rgb_frame=frame;
         // cvtColor(frame,rgb_frame,CV_YUV2BGR);
         Mat yuv_frame;
-       // imwrite("test.jpg",rgb_frame);
+        // imwrite("test.jpg",rgb_frame);
         int test=*rgb_frame.data;
 
         // if(20<test<128){
